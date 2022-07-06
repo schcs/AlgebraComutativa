@@ -1,0 +1,319 @@
+\documentclass[12pt]{amsart}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{showkeys}
+
+\renewcommand{\a}{\mathfrak a}
+\renewcommand{\b}{\mathfrak b}
+\newcommand{\F}{\mathbb F}
+\renewcommand{\L}{\mathbb L}
+\newcommand{\K}{\mathbb K}
+\newcommand{\fracf}[1]{\mbox{Frac}(#1)}
+
+
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem{lemma}[theorem]{Lemma}
+
+\oddsidemargin 0pt
+\evensidemargin 0pt
+\textheight 8.1in \textwidth 6.3in
+
+
+\relpenalty=10000
+\binoppenalty=10000
+\tolerance=500
+
+
+\begin{document}
+
+\title{Lema de normalização de Noether}
+\maketitle
+
+Seja $\F\subseteq\K$ uma extensão de corpos.
+Um subconjunto $\Omega\subseteq \K$ é 
+dito {\em algebricamente dependente} (sobre $\F$) se existe um polinômio $f\in\F[t_1,\ldots,t_n]\setminus\{0\}$
+e elementos $\alpha_1,\ldots,\alpha_n\in\Omega$ distintos tais que 
+\[ 
+    f(\alpha_1,\ldots,\alpha_n)=0.
+\] 
+Caso 
+contrário, $\Omega$ é dito {\em algebricamente independente}. O subconjunto $\emptyset$ é considerado algebricamente independente.
+
+Usando o Lema de Zorn, pode-se provar que $\K$ possui subconjuntos maximais algebricamente independentes. 
+Tal conjunto é dito {\em base transcendental} de $\K$ sobre $\F$. Segue da definição que se $B$ é uma uma base 
+transcendental de $\K$ sobre $\F$, então $\K$ é algébrico sobre $\F(B)$.  
+
+\begin{lemma}\label{lem:bas_tr}
+    Seja $\F\subseteq\K$ uma extensão de corpos. 
+    \begin{enumerate}
+        \item Toda base transcendental de $\K$ sobre $\F$ têm a mesma 
+    cardinalidade. 
+    \item As seguintes são equivalentes para um conjunto $\Omega\subseteq \K$.
+\begin{enumerate}
+    \item $\Omega$ é uma base transcendental de $\K$ sobre $\F$.
+    \item $\Omega$ é algebricamente indepdentente e $\F(\Omega)\subseteq \K$ é uma extensão algébrica. 
+\end{enumerate}
+\item 
+Sejam $X,Y\subseteq \K$ tais que  
+    \begin{enumerate}
+        \item[(c)] $X\subseteq Y$;
+        \item[(d)] $X$ é algebricamente independente;
+        \item[(e)] the extensão $\F(Y)\subseteq \K$ é algébrica. 
+    \end{enumerate}
+    Então existe uma base transcendental $B$ de $\K$ sobre $\F$ tal que $X\subseteq B\subseteq Y$. 
+\end{enumerate}
+\end{lemma}
+\begin{proof}
+    \cite{}.
+\end{proof}
+
+\begin{corollary}\label{cor:pols}
+    Assuma que $\F[x_1,\ldots,x_n]$ é um anel de polinômios em $n$ variáveis e sejam $t_1,\ldots,t_n$ tais que 
+    a extensão de anéis é $\F[t_1,\ldots,t_n]\subseteq \F[x_1,\ldots,x_n]$ é integral. Então $t_1,\ldots,t_n$ 
+    são algebricamente independentes. 
+\end{corollary}
+\begin{proof}
+    Sejam $\K=\F(t_1,\ldots,t_n)$ e $\L=\F(x_1,\ldots,x_n)$ os corpos de frações de $\F[t_1,\ldots,t_n]$ e $\F[x_1,\ldots,x_n]$, respectively. Como $x_i$ é integral sobre $\F[t_1,\ldots,t_n]$, $x_i$ 
+    é raiz de um polinômio mônico com coeficientes em  $\F[t_1,\ldots,t_n]$ e assim $x_i$ é algébrico 
+    sobre $\K$. Logo, $\L$ é uma extensão algébrica de $\K$ e aplicando Lemma~\ref{lem:bas_tr} para $X=\emptyset$ e 
+    $Y=\{t_1,\ldots,t_n\}$, um subconjunto $Y'\subseteq \{t_1,\ldots,t_n\}$ é base transcendental de $\L$ sobre $\F$. 
+    Por outro lado, $\{x_1,\ldots,x_n\}$ é base transcendental de $\L$ sobre $\K$ e toda base transcendental tem $n$ elementos. Assim $Y'=Y$ e, em particular, $\{t_1,\ldots,t_n\}$
+    é um conjunto algebricamente independente. 
+\end{proof}
+
+\begin{lemma}\label{lem:modfin}
+    Assuma que $A\subseteq B$ é uma extensão de anéis e seja $x\in B$. Se $B$ é módulo-finito sobre $A$, 
+    então $B[x]$ é módulo-finito sobre $A[x]$.
+\end{lemma}
+\begin{proof}
+    Seja $B=(b_1,\ldots,b_k)_A$. Então $B[x]=(b_1,\ldots,b_k)_{A[x]}$. 
+\end{proof}
+
+\begin{lemma}\label{lem:polvars}
+    Assuma que $\F[x_1,\ldots,x_n]$ é uma álgebra de polinômios em $n$ variáveis e sejam  
+    $X,Y\subseteq \{x_1,\ldots,x_n\}$. 
+    Então 
+    \[
+        (X)_{\F[x_{x_1,\ldots,x_n}]}\cap \F[Y]\cong 
+        (X\cap Y)_{ \F[Y]}.
+    \]
+Em particular, se $X\cap Y=\emptyset$, então $(X)_{\F[x_{x_1,\ldots,x_n}]}\cap \F[Y]=0$. 
+\end{lemma}
+\begin{proof}
+Exercise. 
+\end{proof}
+
+\begin{lemma}\label{lemma1}
+    Seja $R=\F[x_1,\ldots,x_n]$ uma álgebra de polinômios e seja $t_1\in R$ tal que $t_1R\neq R$. Existem $t_2,\ldots,t_n$ tais que 
+    \begin{enumerate}
+        \item $t_1,t_2,\ldots,t_n$ são algebricamente independentes sobre $\F$;
+        \item $R$ é módulo-finito sobre $P=\F[t_1,\ldots,t_n]$;
+        \item $t_1R\cap P = t_1P$.
+    \end{enumerate} 
+\end{lemma}
+\begin{proof}
+    Primeiro note que quando $t_1=0$, então podemos tomar $t_i=x_i$ para $i\in\{1,\ldots,n\}$. 
+    Assumamos que $t_1\neq 0$. 
+    Seja $\ell$ um número natural a ser determinado mais precisamente depois. 
+    Defina para $i\in\{2,\ldots,n\}$, $t_i=x_i-x_1^{\ell^{i-1}}$. Ponha $P=\F[t_1,\ldots,t_n]$ e observe que 
+    $P[x_1]=R$. Afirmamos que $x_1$ é integral sobre $\F[t_1,\ldots,t_n]$. Como 
+    $t_1\in\F[x_1,\ldots,x_n]$, temos que   
+\begin{equation}\label{eq:nagata}  
+    t_1=\sum_v \alpha_vt_1^{v_1}\cdots t_n^{v_n}=
+    \sum_v \alpha_v t_1^{v_1}(t_2+x_1^{\ell})^{v_2}\cdots(t_n+x_1^{\ell^{n-1}})^{v_n}.
+\end{equation}
+Usando a notação 
+\begin{equation}\label{eq:n}
+    n(v)=v_1+v_2\ell+v_3\ell^2+\ldots+v_n\ell^{n-1},
+\end{equation}
+cada parcela na soma anterior tem a forma
+\[    
+    \alpha_v t_1^{v_1}(t_2+x_1^{\ell})^{v_2}\cdots(t_n+x_1^{\ell^{n-1}})^{v_n}=
+    t_1^{n(v)}+\mbox{(termos de grau menor em $t_1$).}
+\] 
+Ora assuma que $\ell$ é maior que todo expoente $v_i$ aparecendo em~\eqref{eq:nagata}. 
+Neste caso $n(v)$ pode ser visto como uma expansão de um número natural na base $\ell$. Em particular, 
+$n(v)\neq n(v')$ se $v\neq v'$. Isso quer dizer que os termos $\alpha_v x_1^{n(v)}$ não se cancelam 
+em~\eqref{eq:nagata}. Seja $w$ o vetor que com $\alpha_w\neq 0$ em~\eqref{eq:nagata} e 
+$n(w)$ maximal. Neste caso 
+\[
+    t_1=\alpha_wx_1^{n(w)}+\mbox{(termos de menor grau em $x_1$)}.
+\]
+Assim, obtemos a equação
+\[
+    x_1^{n(w)}-t_1+\mbox{(termos de menor grau em $x_1$)}=0
+\]
+na qual o lado esquerdo é um polinômio em na variável $x_1$ com coeficinetes em $\F[t_1,\ldots,t_n]$. 
+Portanto $x_1$ é integral sobre $P=\F[t_1,\ldots,t_n]$ e $R$ é módulo-finito sobre $\F[t_1,\ldots,t_n]$.
+Ora, Lema~\ref{lem:bas_tr} implica também que $t_1,\ldots,t_n$ são algebricamente independentes sobre $\F$. 
+
+Nos resta provar (3). Temos que $t_1\in P$ e $t_1\in t_1R$ e assim $t_1P\subseteq t_1R\cap P$. Seja 
+$x\in t_1R\cap P$ e escreva $x=t_1y$ onde $y\in R$. Considere a cadeia de extensões
+\[
+    P\subseteq R\cap \fracf P\subseteq R  
+\]
+e observe que $y\in R\cap \fracf P$. 
+Como $R$ é módulo-finito sobre $P$, temos que $R\cap \fracf P$ (sendo um submódulo de 
+um módulo finitamente gerado sobre um anel noetheriano) é módulo-finito sobre $P$. Agora considerando 
+$R\cap \fracf P$ em $\fracf P$, temos que $R\cap \fracf P$ é integral sobre $P$, ou seja $R\cap \fracf P$ está contido na normalização $\widetilde P$ de $P$ em $\fracf P$. Mas $P$, sendo álgebra de polinômios sobre um corpo, é DFU, e assim $\widetilde P=P$. Isso implica que $y\in P$, ou seja $x\in t_1P$.  
+\end{proof}
+
+\begin{lemma}\label{lemma2}
+    Seja $R=\F[x_1,\ldots,x_n]$ uma álgebra de polinômios e seja $\a\subsetneqq R$ um ideal. Existem $t_1,\ldots,t_n$ tais que 
+    \begin{enumerate}
+        \item $t_1,t_2,\ldots,t_n$ são algebricamente independentes sobre $\F$;
+        \item $R$ é módulo-finito sobre $P=\F[t_1,\ldots,t_n]$;
+        \item $\a\cap P = (t_1,\ldots,t_h)$ com algum $h\in\{1,\ldots,n\}$.
+    \end{enumerate} 
+\end{lemma}
+\begin{proof}
+    Indução por $n$. Quando $n=1$, então $R=\F[x_1]$ e $\a=t_1R$ com algum $t_1\in R$ e o resultado está válido 
+    pelo Lema~\ref{lemma1}. Assuma que o resultado está válido para anéis de polinômios com $n-1$ variáveis. 
+    Considere $\a\subseteq \F[t_1,\ldots,t_n]$ como no enunciado. Primeiro, se $\a=0$, então 
+    tomamos $t_i=x_i$ para todo $i\in\{1,\ldots,n\}$. Assuma que $\a\neq 0$, e seja $t_1\in\a$ arbitrário 
+    não nulo. Use Lema~\ref{lemma1} para obter elementos $u_2,\ldots,u_n$ tais que 
+    \begin{enumerate}
+        \item $t_1,u_2,\ldots,u_n$ são algebricamente independentes.
+        \item $R$ é módulo finito sobre $P_1=\F[t_1,u_2,\ldots,u_n]$;
+        \item $t_1R\cap P_1=t_1P_1$. 
+    \end{enumerate}
+    Ora, usando a Hipótese de Indução para o anel $R_0=\F[u_2,\ldots,u_n]$ e o ideal $\b=\a\cap R_0$, ache 
+    $t_2,\ldots,t_n\in R_0$ tais que 
+    \begin{enumerate}
+        \item  $t_2,\ldots,t_n$ são algebricamente independentes sobre $\F$;
+        \item $R_0$ é módulo-finito sobre $P_0=\F[t_2,\ldots,t_n]$;
+        \item $\b\cap P_0=\a\cap P_0=(t_2,\ldots,t_h)_{P_0}$ com algum $h\leq n$.
+    \end{enumerate} 
+    Seja $P=\F[t_1,t_2,\ldots,t_n]$.
+    Lembre que $R$ é módulo-finito sobre $P_1$ e $\F[u_2,\ldots,u_n]$ é módulo-finito sobre
+    $P_0$. Por Lema~\ref{lem:modfin}, $P_1=\F[t_1,u_1,\ldots,u_n]$ é módulo-finito sobre 
+    $P=\F[t_1,t_2,\ldots,t_n]$. Por transitividade, $R$ é módulo-finito sobre $P$. Lema~\ref{lem:bas_tr} implica 
+    também que $t_1,\ldots,t_n$ são algebricamente independentes. 
+
+    Nos resta provar afirmação $(3)$. Claramente $t_1,\ldots,t_h\in \a\cap P$ e assim 
+    $(t_1,\ldots,t_j)_{P}\subseteq \a\cap P$. Assuma que $x\in\a\cap P$. Escreva 
+    \[
+        a=f_0+f_1t_1+f_2t_1^2+\cdots +f_kt_1^k
+    \]
+    com $f_i\in\F[t_2,\ldots,t_n]$.
+    e note que $f_0=x-\sum_{i\geq 1}f_it_1^i\in \a\cap \F[t_2,\ldots,t_n]$. Por outro lado,
+    \[
+        \a\cap \F[t_2,\ldots,t_n]=(t_2,\ldots,t_h)_{P_0}\subseteq (t_2,\ldots,t_h)_{P}. 
+    \] 
+    Logo $f_0\in (t_2,\ldots,t_h)_{P}$ e $x\in (t_1,t_2,\ldots,t_h)_{P}$.
+\end{proof}
+
+\begin{lemma}\label{lemma3}
+    Seja $R=k[x_1,\ldots,x_n]$ uma álgebra de polinômios e seja $\a_1\subseteq \a_2\subseteq \cdots\subseteq \a_r\subsetneqq R$ uma cadeia de ideais. Existem 
+    $t_1,\ldots,t_n$ tais que 
+    \begin{enumerate}
+        \item $t_1,t_2,\ldots,t_n$ são algebricamente independentes;
+        \item $R$ é módulo-finito sobre $P=k[t_1,\ldots,t_n]$;
+        \item $\a_i\cap P = (t_1,\ldots,t_{h_i})$ com algum $h_i\in\{1,\ldots,n\}$.
+    \end{enumerate} 
+\end{lemma}
+\begin{proof}
+    Indução por $r$. O caso $r=1$ é o Lema~\ref{lemma2}. A hipótese da indução é que o lema é verdadeiro para uma cadeia de $r-1$ ideais. 
+
+    Assuma que temos uma cadeia de $r$ ideais como no enunciado. Usando a hipótese da indução para a cadeia $\a_1\subseteq \cdots \subseteq \a_{r-1}$ obtemos 
+    elementos $u_1,\ldots,u_n\in R$ tais que 
+    \begin{enumerate}
+        \item $u_1,\ldots,u_n$ são algebricamente independentes;
+        \item $R$ é módulo-finito sobre $P_1=k[u_1,\ldots,u_n]$;
+        \item $\a_i\cap P_1=(u_1,\ldots,u_{h_i})_{P_1}$ com $1\leq h_1\leq h_2\leq \cdots\leq  h_{r-1}$.
+    \end{enumerate}
+
+    Seja $h=h_{r-1}$. Ora, usando Lema~\ref{lemma2} para $S=k[u_{h+1},\ldots,u_n]$ e $\b=\a_r\cap S$, obtenha $t_{h+1},\ldots,t_n$ tais que 
+    \begin{enumerate}
+        \item $t_{h+1},\ldots,t_n$ são algebricamente independentes;
+        \item $S$ é módulo-finito sobre $P_2=k[t_{h+1},\ldots,t_n]$;
+        \item $(\b\cap P_2)= \a\cap P_2=(t_{h+1},\ldots,t_{h_r})_{P_2}$ com algum $h_r\in\{r+1,\ldots,n\}$.
+    \end{enumerate}
+\end{proof}
+
+Agora ponha $t_i=u_i$ para $i\in\{1,\ldots,h\}$. Afirmamos que os elementos $t_1,\ldots,t_h,t_{h+1},\ldots,t_n$ satisfazem as afirmações do Teorema. Primeiro temos que as extensões 
+\[
+    k[t_{h+1},\ldots,t_n] \subseteq k[u_{h+1},\ldots,u_n]\quad \mbox{e}\quad k[u_1,\ldots,u_n]\subseteq R
+\]
+são módulo-finitas. Portanto
+\[
+    k[t_1,\ldots,t_{h},t_{h+1},\ldots,t_n]= k[u_1,\ldots,u_{h},t_{h+1},\ldots,t_n]\subseteq R
+\]
+é módulo-finito. Isso também implica que $t_1,\ldots,t_n$ são algebricamente independentes.
+
+Seja $i\in\{1,\ldots,r\}$. Temos que $t_1,\ldots,t_{h_i}\in\a_i\cap P$ então 
+\[ 
+    (t_1,\ldots,t_{h_i})_P\subseteq \a_i\cap P.
+\] 
+Para provar a outra inclusão, 
+assuma que $x=\a_i\cap P$ e seja $m=h_i$. Então 
+\[
+    x=\sum_v f_vt_1^{v_1}\cdots t_m^{v_m}\quad\mbox{com}\quad f_i\in k[t_{m+1},\ldots,t_n].
+\] 
+Note, para $i\in\{1,\ldots,r-1\}$, que
+\begin{align*}
+    f_0\in\a_i\cap k[t_{m+1},\ldots,t_n]&=
+    (\a_i\cap k[u_1,\ldots,u_n])\cap k[t_{m+1},\ldots,t_n]\\
+    &\subseteq (\a_i\cap k[u_1,\ldots,u_n])\cap k[u_{m+1},\ldots,u_n]\\& 
+    =(u_1,\ldots,u_m)_{P_1}\cap k[u_{m+1},\ldots,u_n]=0.
+\end{align*}
+Se $i=r$,  
+\begin{align*}
+    f_0\in\a_i\cap k[t_{m+1},\ldots,t_n]&=(\a_i\cap k[t_1,\ldots,t_n])\cap k[t_{m+1},\ldots,t_n]\\
+    %&\subseteq (\a_i\cap k[u_1,\ldots,u_n])\cap k[u_{m+1},\ldots,u_n]\\& 
+    &=(t_1,\ldots,t_m)_{P}\cap k[t_{m+1},\ldots,t_n]=0.
+\end{align*}
+Nos dois casos, $f_0=0$ e $x\in (t_1,\ldots,t_h)_P$. 
+
+\begin{theorem}[Teorema de Normalização de Noether]
+    Seja $R=k[y_1,\ldots,y_n]$ uma $k$-álgebra finitamente gerada e seja $\a_1\subseteq \a_2\subseteq \cdots\subseteq \a_r\subsetneqq R$ uma cadeia de ideais. Existem 
+    $t_1,\ldots,t_m$ tais que 
+    \begin{enumerate}
+        \item $t_1,t_2,\ldots,t_m$ são algebricamente independentes;
+        \item $R$ é módulo-finito sobre $P=k[t_1,\ldots,t_m]$;
+        \item $\a_i\cap P = (t_1,\ldots,t_{h_i})$ com algum $h_i\in\{1,\ldots,n\}$.
+    \end{enumerate} 
+\end{theorem}
+\begin{proof}
+    Seja $R_0=k[x_1,\ldots,x_n]$ a álgebra de polinômios e considere o mapa $\psi:R_0\to R$ definido como 
+    $\psi(x_i)=y_i$ para todo $i$. Seja $\b_0=\ker\psi=\psi^{-1}(0)$ e $\b_i=\psi^{-1}(\a_i)$ para $i\geq 1$. 
+    Aplique Lema~\ref{lemma3} para a álgebra $R_0$ e a cadeia $\b_0\subseteq \b_1\subseteq \cdots\subseteq \b_r$ e obtenha uma sequência $u_{-h},\ldots,u_0,u_1,\ldots,u_m$ que satisfaz a 
+    afirmação do Lema~\ref{lemma3} com $(\ker \psi)\cap P_1=(u_{-h},\ldots,u_0)_{P_1}$. 
+    Seja $t_i=\psi(u_i)$ para $i\in\{1,\ldots,m\}$. 
+
+    Primeiro 
+    \[
+        k[t_1,\ldots,t_m]\cong P_1/(\ker(\psi)\cap P_1)=k[u_1,\ldots,u_n]. 
+    \]
+    Logo, $t_1,\ldots,t_m$ são algebricamente independentes.
+
+    Além disso, 
+    \[
+        k[t_1,\ldots,t_n]\cong (P_1+\ker\psi)/\ker\psi\quad\mbox{e}\quad 
+        R\cong R_0/ker\psi.  
+    \]
+    Como a extensão $k[t_1,\ldots,t_n]\subseteq R_0$ é módulo finita, a extensão $P\subseteq R$ também é.
+
+    Finalmente, nos resta provar que $\a_i\cap P=(t_1,\ldots,t_{h_i})_P$. 
+    %Claramente, 
+    %$t_1,\ldots,t_{h_i}\in \a_i\cap P$ e assim $(t_1,\ldots,t_{h_i})_P\subseteq \a_i\cap P$. 
+    %Além disso, 
+    %$b_i\cap P_0=(u_{1},\ldots,u_{h_i})_{\F[u_1,\ldots,u_m]}$ (Lemma~\ref{lem:polvars}).
+    %Ponha $P_0=\F[u_1,\ldots,u_m]$ e note que $\psi_0=\psi|_{P_0}:P_0\to P$ é um isomorfismo. 
+Primeiro, note que    
+\begin{align*}
+        \psi(\b_i\cap P_0)&=\psi((u_{-h},\ldots,u_{h_i})_{\F[u_{-h},\ldots,u_m]})=
+        \psi((u_{-h},\ldots,u_{h_i}))_{\psi(\F[u_{-h},\ldots,u_m])}\\&=
+        (t_1,\ldots,t_{h_i})_{P}.
+    \end{align*}
+    Logo
+    \[
+        \a_i\cap P=\psi(\psi^{-1}(\a_i\cap P))=\psi(\psi^{-1}(\a_i)\cap \psi^{-1}(P))=
+        \psi(\b_i\cap P_0)=(t_1,\ldots,t_{h_i})_{P}.
+    \]
+\end{proof}
+
+
+\end{document}

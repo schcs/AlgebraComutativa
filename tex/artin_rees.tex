@@ -1,0 +1,113 @@
+\documentclass[12pt]{amsart}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{showkeys}
+\usepackage{tikz-cd}
+
+\renewcommand{\a}{\mathfrak a}
+\renewcommand{\b}{\mathfrak b}
+\newcommand{\m}{\mathfrak m}
+\newcommand{\n}{\mathfrak n}
+\newcommand{\p}{\mathfrak p}
+\newcommand{\q}{\mathfrak q}
+\renewcommand{\r}{\mathfrak r}
+\newcommand{\F}{\mathbb F}
+\renewcommand{\L}{\mathbb L}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\N}{\mathbb N}
+\newcommand{\Z}{\mathbb Z}
+
+
+\newcommand{\K}{\mathbb K}
+\newcommand{\fracf}[1]{\mbox{Frac}(#1)}
+\newcommand{\spec}[1]{\mbox{Spec}(#1)}
+\newcommand{\len}{\mbox{len}\,}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{exercise}[theorem]{Exercício}
+
+\theoremstyle{definition}
+\newtheorem{example}[theorem]{Exemplo}
+
+
+\oddsidemargin 0pt
+\evensidemargin 0pt
+\textheight 8.1in \textwidth 6.3in
+
+
+\relpenalty=10000
+\binoppenalty=10000
+\tolerance=500
+
+
+\begin{document}
+
+\Large
+\title{O Teorema de Artin-Rees}
+\maketitle
+
+Seja $M$ um $R$-módulo e $\a\subseteq R$ um ideal. Considere os conjuntos $m+\a^iM$ com $m\in M$ e 
+$i\geq 0$. Estes conjuntos formam uma base aberta para uma topologia sobre $M$ chamado de 
+\emph{topologia $\a$-ádica} e $M$ pode ser considerado como um espaço topológico. 
+
+\begin{lemma}
+    A adição e o multiplicação com escalar são funções contínuas sobre $M$ na $\a$-ésima topologia. 
+    Além disso $M$ é Haussdorf na $\a$-ésima topologia se s somente se $\bigcap_{i\geq 0}\a^iM=0$.
+\end{lemma}
+\begin{proof} Exercício.
+\end{proof}
+Um caso particular é quando $M=R$ e neste caso temos que $x+\a^i$ com $x\in R$ e $i\geq 0$ formam uma 
+base para a topologia sobre $R$. 
+
+Se $N$ é um submódulo de $M$, temos que $N$ pode ser visto com a própria $\a$-ésima topologia e também com 
+a topologia induzida da $\a$-ésima topologia de $M$. O seguinte resultado implica que as duas topologias são as mesmas.
+
+\begin{theorem}[Artin--Rees]
+Sejam $R$ um anel noetheriano, $\a\subseteq R$ ideal e $M$ um $R$-módulo finitamente gerado. Seja $N\subseteq M$
+um submódulo. Então existe $r\in\N$ tal que 
+\[
+    (\a^nM)\cap N=\a^{n-r}(\a^r M\cap N)
+\]
+para todo $n\geq r$. Em particular, para todo $n$ suficientemente grande
+\[
+\a^nN\subseteq (\a^nM)\cap N\subseteq \a^{n-r}N.
+\]
+\end{theorem}
+\begin{proof}
+    Assuma que $\a=(x_1,\ldots,x_u)_R$ e $M=(m_1,\ldots,m_v)$. 
+    Considere a álgebra $B_\a(R)$ e o módulo $B_\a(M)$ "blow-up"definidos como 
+\[
+    B_\a(R)=\bigoplus_{n\geq 0}\a^n\quad\mbox{e}\quad
+    B_\a(M)=\bigoplus_{n\geq 0}\a^nM.
+\]
+A álgebra $B_\a(R)$ é finitamente gerada como $R$-álgebra, pois ela é gerada pelos 
+elementos $(0,x_i,0,\ldots)$ para $i\in\{1,\ldots,u\}$. Portanto $B_\a(R)$ é notheriana.
+Além disso, $B_\a(M)$ é gerado por $(m_i,0.\ldots,)$ com $i\in\{1,\ldots,v\}$ e $B_\a(M)$ é finitamente
+gerado como $B_\a(R)$-módulo. 
+
+A inclusão $\a^{n-r}(\a^rM\cap N)\subseteq \a^nM\cap N$ é clara. Para 
+a inclusão oposta, considere 
+\[
+    P=\bigoplus_{n\geq 0}\a^nM\cap N
+\]
+como um submódulo de $B_\a(M)$. Como $B_\a(M)$ é finitamente gerado sobre a álgebra noetheriana $B_\a(R)$, $P$ é finitamente gerado como $B_\a(R)$-módulo. Seja $r$ o grau máximo de 
+um elemento em um conjunto de geradores homogêneos. Então para $n\geq r$, temos que 
+\[
+    P_n=\sum_{i=0}^r B_\a(R)_{n-i}P_i
+\]
+logo 
+\[
+    (\a^n M)\cap N=\sum_{i=0}^r \a^{n-i}((\a^iM)\cap N)\subseteq \a^{n-r}((\a^rM)\cap N).
+\]
+A  última igualdade segue, pois um elemento de $\a^{n-i}((\a^iM)\cap N)$ tem a forma 
+\[
+    x_1\cdots x_{n-i}(x_{n-i+1}\cdots x_n)m
+\]
+com $x_i\in\a$ e $m\in M$ e $(x_{n-i+1}\cdots x_n)m\in N$. Se $r\geq i$, então o mesmo elemento pode ser escrito como 
+\[
+    x_1\cdots x_{n-r}(x_{n-r+1}\cdots x_{n-i+1}\cdots x_n)m\in \a^{n-r}((\a^r M)\cap N).
+\]
+\end{proof}
+\end{document}

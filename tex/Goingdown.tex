@@ -1,0 +1,243 @@
+\documentclass[12pt]{amsart}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{showkeys}
+\usepackage{tikz-cd}
+
+\renewcommand{\a}{\mathfrak a}
+\renewcommand{\b}{\mathfrak b}
+\newcommand{\m}{\mathfrak m}
+\newcommand{\n}{\mathfrak n}
+\newcommand{\p}{\mathfrak p}
+\newcommand{\q}{\mathfrak q}
+\renewcommand{\r}{\mathfrak r}
+\newcommand{\F}{\mathbb F}
+\renewcommand{\L}{\mathbb L}
+\newcommand{\K}{\mathbb K}
+\newcommand{\fracf}[1]{\mbox{Frac}(#1)}
+\newcommand{\spec}[1]{\mbox{Spec}(#1)}
+
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{exercise}[theorem]{Exercício}
+
+\oddsidemargin 0pt
+\evensidemargin 0pt
+\textheight 8.1in \textwidth 6.3in
+
+
+\relpenalty=10000
+\binoppenalty=10000
+\tolerance=500
+
+
+\begin{document}
+
+\Large
+\title{Going-down}
+\maketitle
+
+Seja $S$ uma $R$-álgebra, com morfismo $\varphi:R\to S$, e seja $\p\in\spec S$. Então $\varphi^{-1}(\p)$ 
+pertence ao $\spec R$.
+Dizemos que o ideal $\p$ {\em está acima de} $\varphi^{-1}(\p)$. Quando $R\subseteq S$ e 
+$\varphi$ é a inclusão, temos que $\varphi^{-1}(\p)=R\cap \p$. 
+
+
+\begin{lemma}
+    Seja $R\subseteq S$ uma extensão de anéis onde $R$ é um anel local com ideal maximal $\p$. 
+    Seja $\q$ um ideal primo de $S$ tal que $\p\subseteq \q\cap R$. Então $\q$ está acima de $\p$. 
+\end{lemma}
+\begin{proof}
+    Segue que $\p= \q\cap R$ pois $\q\cap R\neq R$ e $\p$ é o único maximal em $R$.
+\end{proof}
+\begin{lemma}
+    Seja $R\subseteq S$ uma extensão integral de anéis, $\p\in\spec R$ e $\q_1\subseteq \q_2\in\spec S$, e
+    $\a$ um ideal arbitrário de $S$. 
+    \begin{enumerate}
+        \item Se $\q$ está acima de $\p$ então $\q$ é maximal se e somente se $\p$ é maximal.
+        \item Assuma que $\q_1$ e $\q_2$ estão acima de $\p$. Então $\q_1=\q_2$.
+        \item Existe $\r$ que está acima de $\p$. 
+        \item Assuma que $\a\cap R\subseteq \p$. Então existe $\r$ em (3) tal que $\a\subseteq \r$. 
+    \end{enumerate}
+\end{lemma}
+\begin{proof}
+    (1) Considere o mapa $\psi:R/\p\to S/\q$ definida por $r+\p\mapsto r+\q$. 
+    O mapa $\psi$ está bem definido e 
+    \[
+        \ker\psi=\{r+\p\in R/\p\mid r+\q=0\}.
+    \]
+    Por outro lado, se $r+\q=0$, então $r\in \q\cap R=\p$ e $r+\p=0$. Logo $\psi$ é injetiva.
+    Portanto $R/\p\subseteq S/\q$
+    é uma extensão  de anéis. Se $s\in S$ então 
+    \[
+        s^n+\beta_1s^{n-1}+\cdots+\beta_n=0
+    \]    
+    com $\beta_i\in R$ e 
+    \begin{align*}
+        &(s+\q)^n+(\beta_1+\p)(s+\q)^{n-1}+\cdots+(\beta_n+\p)\\&=
+        (s+\q)^n+(\beta_1+\q)(s+\q)^{n-1}+\cdots+(\beta_n+\q)\\&=
+        (s^n+\beta_1s^{n-1}+\cdots+\beta_n)+\q=0.
+    \end{align*}    
+    Portanto, $R/\p\subseteq S/\q$ é integral.
+    Por um lema anterior, um é corpo se e somente se outro é.
+
+    (2) Assuma primeiro que $(R,\p)$ é um anel local. Então $\q_1$ e $\q_2$ são maximais
+    por item (1)
+    e segue que $\q_1=\q_2$. 
+    
+    No caso geral, seja $U=R\setminus\p$ e considere as localizações $R_{(\p)}=U^{-1}R$ e 
+    $U^{-1}S$.  O mapa de mergulho $U^{-1}R\to U^{-1}S$ é injetivo, pois se $r/u\in U^{-1}R$ tal que 
+    $r/u=0/1\in U^{-1}S$ então 
+    $rw=0$ com algum $w\in R\setminus \p$ e $r/u=0/1\in U^{-1}R$. Então $U^{-1}R\subseteq U^{-1}S$ é 
+    uma extensão de anéis. Afirmamos que, 
+    a extensão $U^{-1}R\subseteq U^{-1}S$ é integral. De fato, se $s/u\in U^{-1}S$, então 
+    $U^{-1}R[s/u]=U^{-1}R[s]$. Mas $s$ é integral sobre $R$ e satisfaz uma equação integral 
+    \[
+        s^n+\beta_1s^{n+1}+\cdots+\beta_n=0
+    \]
+    com coeficientes $\beta_i\in R$. A mesma equação será uma equação integral para $s/1$ com coeficientes em $U^{-1}R$. Portanto $U^{-1}R[s/u]=
+    U^{-1}[s]$ é finitamente gerado como $U^{-1}R$-módulo e $s/u$ é integral sobre $U^{-1}R$. 
+    
+    Como $U^{-1}R=R_{(\p)}$ é local com único ideal maximal $\p U^{-1}R$ e como  
+    $\p U^{-1}R\subseteq \q_i U^{-1}S\cap U^{-1}R$ para $i\in\{1,2\}$, 
+    e o lema anterior implica que $\q_i U^{-1}S$ está acima de $\p U^{-1}R$.  
+    Ora, o parágrafo anterior implica que $\q_1U^{-1}S=\q_2U^{-1}S$. Como $\q_i\cap U=\emptyset$,  
+    e a correspondência entre os primos em 
+    $\spec S$ que interceptam trivialmente com $U$ e os primos de $U^{-1}S$ implica que $\q_1=\q_2$.
+    
+    (3) Assuma primeiro que $(R,\p)$ é um anel local. O anel $S$ tem um ideal maximal $\q$ e 
+    $\q\cap R$ é maximal por afirmação~(1). Logo $\q\cap R$ deve ser igual a $\p$.
+
+
+    No caso geral, considere as localizações $U^{-1}R$ e $U^{-1}S$ como na demonstração 
+    da afirmação~(2).  
+    Assuma que $\r'$ é um ideal maximal de $U^{-1}S$. Então $\r'\cap U^{-1}R$ maximal em $U^{-1}R$ 
+    e portanto $\r'\cap U^{-1}R=\p U^{-1}R$. Definimos $\r=\varphi_S^{-1}(\r')$.
+%    Se $p\in\p$, então $\varphi_S(p)=p/1 \in\p R_{(\p)}\subseteq \r'$, e assim $p\in\varphi^{-1}(\r')=\r$; 
+%    ou seja $\p\subseteq \r\cap R$. Para $r\in R$, temos que $\varphi_R(r)=\varphi_S(r)$ e 
+Já monstramos da demonstração da afirmação~(2) que o mapa canônico $U^{-1}R\to U^{-1}S$ é uma inclusão e 
+assim temos o seguinte diagrama comutativo:
+    \[\begin{tikzcd}
+        \arrow{d}{\varphi_R}R \arrow{r} & S \arrow{d}{\varphi_S} &  \\
+        U^{-1}R \arrow{r} & U^{-1}S 
+    \end{tikzcd}
+    \]
+Calculando a pré-imagem em $R$ de $\r'\subseteq U^{-1}S$ pela composição dos mapas das duas 
+maneiras no  diagrama, obtemos que  
+\[ 
+    R\cap \r=R\cap \varphi_S^{-1}(\r')=\varphi_R^{-1}(\r'\cap U^{-1}R)=\varphi_{R}^{-1}(\p U^{-1}R)=\p
+\]      
+    
+    (4) Aplique (3) para o extensão $R/(\a\cap R)\subseteq S/\a$. 
+\end{proof}
+
+\begin{lemma}\label{lem:coef_int}
+    Seja $R\subseteq S$ uma extensão de anéis e $f\in R[x]$ um polinômio mônico. Assuma que 
+    $f=gh$ onde $g,h\in S[x]$ e $g$ é mônico. 
+    \begin{enumerate}
+        \item Existe uma extensão $T$ de $R$ tal que $f(x)=\prod (x-x_i)$ em $T[x]$. Além disso, $T$ é $R$-módulo livre de posto $d!$ onde $d=\deg f$.
+        \item $h$ é mônico e os coeficientes de $g$ e $h$ são integrais sobre $R$.
+    \end{enumerate}
+\end{lemma}
+\begin{proof}
+    (1) Seja $R_1=R[x]/(f)$. Então $R_1$ é gerado por $1,\bar x,\bar x^2,\ldots,\bar x^{d-1}$.
+    Assuma que 
+    \[
+        \alpha_0+\alpha_1\bar x+\cdots+\alpha_{d-1}\bar x^{d-1}
+    \]
+    é uma dependência linear não trivial com $\alpha_i\in R$. Então $\bar x$ é raíz do polinômio 
+    \[
+        q(x)=\alpha_0+\cdots+\alpha_{d-1}x^{d-1}
+    \]
+    e $q(x)\mid f(x)$ mas isso é impossível porque $\deg q(x)<\deg f(x)$ e $f(x)$ é mônico.
+    Assim $R_1$ é $R$-módulo livre de posto $d$ e $R\subseteq R_1$. 
+    Ademais, $f(\bar x)=0$ e $f(x)=f_1(x)(x-\bar x)$ com $f_1\in R_1[x]$. Note que $f_1$ é mônico e 
+    $\deg{f_1}=d-1$. Repetimos o processo para $f_1$  e no final obtemos $T$, 
+    as raízes $x_1=\bar x,\ldots,x_d\in T$. 
+
+    (2) O coeficiente líder de $f$ é o produto dos coeficientes líderes de $f$ e $g$. Como $f$ é mônico, $g$ é mônico, obtemos que $h$ é mônico. Aplicando (1), obtemos uma extensão $Q_1$ de $S$ tal que 
+    $g=\prod (x-y_i)$ e uma extensão $Q_2$ de $S$ tal que $h=\prod(x-z_i)$. Os elementos $y_i$ e $z_i$ são integrais sobre $R$, pois são raízes de $f$. Mas os coeficientes de $g$ e $h$ são polinômios em 
+    $y_i$ e $z_i$ e eles também são integrais sobre $R$. 
+\end{proof}
+
+\begin{lemma}
+    Seja $R$ um domínio normal, $\K=\fracf R$ e $\K\subseteq \L$ uma extensão de corpos. 
+    Seja $y\in\L$ integral sobre $R$ e $f\in\K[x]$ o polinômio  minimal (mônico) de $y$. Então $f\in R[x]$ 
+    e $f(y)=0$ é dependência integral.  
+\end{lemma}
+\begin{proof}
+    Como $y\in \L$ é integral, existe $g\in R[x]$ mônico tal que $g(y)=0$. 
+    Pela definição do polinômio minimal, $f(x)\mid g(x)$ considerados como 
+    polinômios em $\K[x]$ e escreva $g=fh$ com $h\in \K[x]$. Então os coeficientes de $f$ são integrais sobre $R$. Como $R$ é normal, $f\in R[x]$. 
+\end{proof}
+
+\begin{exercise}\label{ex:prim}
+    Seja $S$ uma $R$ álgebra com o mapa $\varphi: R\to S$. Seja $\p\in\spec R$ tal que $\varphi^{-1}(\p S)=\p$. 
+    Então existe um ideal $\q\in\spec S$ tal que $\varphi^{-1}(\q)=\p$. 
+\end{exercise}
+
+\begin{theorem}
+    Seja $R\subseteq S$ uma extensão integral de domínios com $R$ normal, e $\p\subset \q$ primos em $R$ e 
+    $\q'$ um primo em $S$ que está acima de $\q$. Então existe um primo $\p'$ em $S$ que está acima de $\p$  
+    e $\p'\subset \q'$.  
+\end{theorem}
+\begin{proof}
+    Considere a localização $S_{(\q')}$. Como $R$ e $S$ são domínios, temos que 
+    $R\subseteq S\subseteq S_{(\q')}$. 
+    Primeiro afirmamos que $\p S_{(\q)}\cap R=\p$. A inclusão $\p\subseteq  \p S_{(\q)}\cap R$ vale trivialmente, 
+    então precisa-se provar que $\p S_{(\q)}\cap R\subseteq \p$. 
+
+    Seja $y\in \p S_{(\q')}\cap R$ com $y\in R\setminus \p$. Assuma que $y=x/s$ onde $x\in \p S$ e $s \in S\setminus\q'$. Seja $\K=\fracf R$. 
+    
+    Afirmamos primeiro que o polinômio minimal de $x$ sobre $\K$ é um polinômio mônico em 
+    $R[t]$ tal que os coeficientes não líderes percentem a $\p$. 
+    Ponha $x=\sum_{i\leq k} y_ix_i$ onde $y_i\in \p$ e 
+    $x_i\in S$  e seja $T=R[x_1,\ldots,x_k]$. Então $x_i$ é integral sobre $R$ para todo $i$ e 
+    $T$ é módulo-finito sobre $R$. Além disso, 
+    \[
+        xt=\sum_{i\leq k}y_ix_it\in \sum_{i\leq k} y_iT\subseteq \p T\mbox{ para todo }t\in T
+\]
+e segeu que $xT\subseteq \p T$. 
+    Assuma que $g(t)\in R[t]$ é o polinômio caraterístico de $\mu_x:T\to T$ definida pela multiplicação 
+    por $x$. Então $g(t)\in R[x]$ é um polinômio mônico tal que os coeficientes não líderes de 
+    $g(t)$ pertencem a $\p$ e $g(x)=0$.  
+    O polinômio minimal $f(t)$ de $x$ sobre $\K$ é um divisor de $g(t)$  e escreva 
+    $g(t)=f(t)h(t)$ onde $f$ e $h$ são mônicos. 
+    Pelo Lema~\ref{lem:coef_int}, 
+    $f(t),h(t)\in R[t]$, 
+    pois $R$ é normal. Além disso, $g\equiv t^n\pmod{\p}$, então $f\equiv t^r$ e $h\equiv t^{n-r}\pmod \p$ 
+    por fatoração única em $\fracf{R/\p}[x]$. Assim os coeficientes não líderes de $f$ e $h$ são em $\p$. 
+    Então a afirmação está provada.
+    Assuma que o polinômio minimal de $x$ está na forma 
+    \begin{equation}\label{eq:pol_min}
+        f(t)=t^n+a_1t^{n-1}+\cdots+a_n\in R[t]
+    \end{equation}
+    onde $a_i\in \p$. 
+
+    Afirmamos que a equação minimal de $s$ sobre $\K$ é 
+    \[
+       m(t)= t^n+b_1t^{n-1}+\cdots+b_n=0\mbox{ com }b_i=a_i/y^i\in\K.
+    \]
+    Substituindo $s=x/y$ em $m(t)$ dá zero. 
+    Por outro lado, se existir uma equação com $\ell<n$ na forma  
+    \[
+        s^\ell+\beta_1 s^{\ell-1}+\cdots+\beta_\ell=0,
+    \]
+    então a mesma implica que 
+    \[
+        x^\ell+\beta_1y_1x^{\ell-1}+\cdots +\beta_\elly_1^\ell=0
+    \]
+    que seria uma equação integral para $x$. Mas a equação minimal de $x$ tem grau $n$ e assim $m(t)$ deve ser 
+    a equação minimal de $s$ sobre $\K$. 
+
+    Como $y\not\in \p$, $b_i\in\p$ pois $a_i=b_iy^i\in\p$. Então $s^n\in\p S\subseteq \q S\subseteq\q'$. 
+    Obtemos que  $s\in\q'$, que é uma contradição. Assim $y\in\p$ e $\p S_{(\q')}\cap R\subseteq\p$ e temos que 
+    $\p S_{(\q')}\cap R=\p$ . 
+    
+    Pelo exercício anterior, existe um primo $\p''\subseteq S_{(\q')}$ com $\p''\cap R=\p$. Além disso, $\p''\subseteq \q'R_{(\q')}$ pois $\q'R_{(\q')}$ é o único maximal. 
+    Defina $\p'=\p''\cap S$. Então $\p'\cap R=\p''\cap S\cap R=\p$ e $\p'\subseteq \q'$.
+\end{proof}
+
+\end{document}

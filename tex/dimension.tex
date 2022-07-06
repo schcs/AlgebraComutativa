@@ -1,0 +1,122 @@
+\documentclass[12pt]{amsart}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{showkeys}
+\usepackage{tikz-cd}
+
+\renewcommand{\a}{\mathfrak a}
+\renewcommand{\b}{\mathfrak b}
+\newcommand{\m}{\mathfrak m}
+\newcommand{\n}{\mathfrak n}
+\newcommand{\p}{\mathfrak p}
+\newcommand{\q}{\mathfrak q}
+\renewcommand{\r}{\mathfrak r}
+\newcommand{\F}{\mathbb F}
+\renewcommand{\L}{\mathbb L}
+\newcommand{\K}{\mathbb K}
+\newcommand{\fracf}[1]{\mbox{Frac}(#1)}
+\newcommand{\spec}[1]{\mbox{Spec}(#1)}
+
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{exercise}[theorem]{Exercício}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+
+
+\oddsidemargin 0pt
+\evensidemargin 0pt
+\textheight 8.1in \textwidth 6.3in
+
+
+\relpenalty=10000
+\binoppenalty=10000
+\tolerance=500
+
+
+\begin{document}
+
+\Large
+\title{Dimension}
+\maketitle
+
+\begin{lemma}
+    Assuma que $k$ é um corpo e $R$ é um $\K$-domínio finitamente gerado. Assuma que 
+    $\p_1\subset\p_2\subset\cdots\subset \p_r$ é uma cadeia em $\spec R$ e seja $d$ o grau de transcendência de $\fracf R$ sobre $k$. Então $r\leq d$ com igualdade se e somente se a cadeia $(\p_i)$ é saturada no sentido que ela não é refinamento de uma cadeia mais longa. 
+\end{lemma}
+\begin{proof}
+Use o Teorema de Normalização de Noether para escolher $t_1,\ldots,t_n\in R$ algebricamente independentes tal que 
+\[
+    \p_i\cap P=(t_1,\ldots,t_{h_i})_P
+\] 
+para $i\in\{1,\ldots,r\}$ onde $P=k[t_1,\ldots,t_n]$. 
+Ponha $\L=\fracf R$ e $\K=\fracf P$. Se $a/b\in\L$, então $a$ e $b$ são 
+integrais sobre $R$ e $a$ e $b$ são obviamente algébricos sobre $\K=\fracf R$. Assim $a/b$ é algébrico sobre 
+$\K$. Logo, a extensão $\K\subseteq \L$ é algébrica e assim 
+$d=n$. O primo $\p_i$ está acima de $\p_i\cap P$ e o lema de incomparabilidade implica que 
+$\p_i\cap P\neq \p_{i+1}\cap P$ para todo $i$ e $h_1<h_2<\cdots<h_r$. Logo $r\leq n=d$. 
+Em particular, $d$ é o maior valor possível para $r$ e neste caso a cadeia é saturada. 
+
+Assuma que a cadeia $(\p_i)$ é saturada e tem comrimento $r$. Neste caso $\p_1=0$ e $h_1=0$ e $\p_r$ é maximal. 
+Como $P\subseteq R$ é integral, temos que $\p_r\cap P$ é maximal e $h_r=n$. 
+Se $r<n$, precisa existir algum $i$ tal que $h_{i}+2\leq h_{i+1}$ temos que 
+\[
+    \p_i\cap P=(t_1,\ldots,t_{h_i})_P\subset (t_1,\ldots,t_{h_{i}},t_{h_i+1}) \subset 
+    (t_1,\ldots,t_{h_{i+1}})_P=\p_{i+1}\cap P.
+\] 
+Ponha $\r= (t_1,\ldots,t_{h_{i}},t_{h_i+1})_P$. 
+Então $P/(\p_i\cap P)\cong k[t_{h_i+1},\ldots,t_n]$ é um anel de polinômios sobre $k$, e 
+é um domínio normal. Além disso, o mapa $P/(\p_i\cap P)\to R/\p_i$ definido por $p+(\p_i\cap P)\mapsto p+\p_i$ é injetiva e $P/(\p_i\cap P)\subseteq R/\p_i$
+é uma extensão integral, pois $P\subseteq R$ é integral. Pelo Teorema de Going-down, existe 
+um primo $\p\in \spec R$ tal que $\p/\p_i\in\spec {R/\p_i}$  está acima de $\r/(\p_i\cap P)$ e 
+$\p/\p_i\subset \p_{i+1}/\p_i$. Como $\r/(\p_i\cap P)\neq 0$, $\p\neq \p_i$ e  $\p_i\subset \p\subset \p_{i+1}$. Obtivemos uma contradição, pois a cadeia 
+$(\p_i)$ foi assumida saturada.   
+\end{proof}
+
+%\begin{definition}
+    Seja $R$ um anel. A dimensão de Krull de $R$ é o supremo dos comprimentos das cadeias 
+    \[
+        \p_1\subset\p_2\subset \cdots \subset \p_k
+    \]
+    de ideais primos em $R$. A dimensão de Krull está denotado por $\dim R$. 
+%\end{definition}
+
+\begin{example}
+    A dimensão de um corpo é zero.
+\end{example}
+
+\begin{theorem}
+    Se $R$ é um $k$-domínio finitamente gerado, então $\dim R$ é igual ao grau de transcendência de $\fracf R$ sobre $k$. 
+\end{theorem}
+
+\begin{theorem}
+    Seja $R$ um $k$-domínio finitamente gerado, seja $\p\in\spec R$ e seja $\m$ um ideal maximal em $R$.   
+    Então 
+    \[
+        \dim R_{(\p)}+\dim R/\p=\dim R\quad\mbox{e}\quad \dim R_{(\m)}=\dim R. 
+    \]
+\end{theorem}
+\begin{proof}
+Assuma que 
+\[
+    \p_1\subset \p_2\subset \cdots\subset \p=\p_i\subset\cdots \subset \p_r
+\]
+é uma cadeia saturada dos primos que contém $\p$. Então $r$ é   igual ao grau de transcendência de $R$ sobre $k$ e $r=\dim R$. Por outro lado 
+\begin{equation}\label{eq:c1}
+    \p_i/\p\subset \cdots\subset \p_r/\p_i
+\end{equation}
+é uma cadeia em $\spec{R/\p}$ e 
+\begin{equation}\label{eq:c2}
+    \p_1 R_{(\p)}\subset \cdots \subset\p_i R_{(\p)}
+\end{equation}
+é uma cadeia em $\spec{R_{(\p)}}$. Assim $\dim R/\p+\dim R_{(\p)}\geq \dim R\geq r$. 
+Por outro lado, cadeias como \eqref{eq:c1}--\eqref{eq:c2} resultam em cadeias em $\spec R$ e assim $\dim R\geq 
+\dim R/\p+\dim R_{(\p)}$.  Logo  
+\[
+    \dim R_{(\p)}+\dim R/\p=\dim R.
+\] 
+A segunda afirmação segue da primeira observando que $\dim R/\m=0$ como $R/\m$ é um corpo.
+\end{proof}
+\end{document}
