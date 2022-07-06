@@ -1,0 +1,173 @@
+\documentclass[12pt]{amsart}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{showkeys}
+
+\renewcommand{\a}{\mathfrak a}
+\renewcommand{\b}{\mathfrak b}
+\newcommand{\m}{\mathfrak m}
+\newcommand{\n}{\mathfrak n}
+\newcommand{\F}{\mathbb F}
+\renewcommand{\L}{\mathbb L}
+\newcommand{\K}{\mathbb K}
+\newcommand{\fracf}[1]{\mbox{Frac}(#1)}
+
+
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{lemma}[theorem]{Lemma}
+\theoremstyle{definition}
+\newtheorem{exercise}[theorem]{Exercise}
+
+\oddsidemargin 0pt
+\evensidemargin 0pt
+\textheight 8.1in \textwidth 6.3in
+
+
+\relpenalty=10000
+\binoppenalty=10000
+\tolerance=500
+
+
+\begin{document}
+
+\title{Nullstellensatz}
+\maketitle
+
+\begin{lemma}\label{lem:corpos}
+    Seja $A\subseteq B$ uma extensão integral de domínios. Então $A$ é corpo se e somente se $B$ é corpo.
+\end{lemma}
+\begin{proof}
+    Assuma que $A$ é corpo e seja $x\in B$. Então $x$ é integral e existem $\alpha_1,\ldots,\alpha_n\in A$ 
+    tais que 
+    \[ 
+        x^n+\alpha_1x^{n-1}+\cdots+\alpha_{n-1}x+\alpha_n=0. 
+    \]
+    Como $B$ é domínio $\alpha_n\neq 0$;
+    ou seja 
+    \[
+        x(x^{n-1}+\alpha_1x^{n-2}+\cdots+\alpha_{n-1})=-\alpha_n.
+    \]    
+    Como $A$ é corpo, $-\alpha_n$ é invertível e assim $x$ também é invertível. 
+
+    Agora assuma que $B$ é corpo e seja $x\in A$. O elemento $x$ é invertível em $B$, então existe $1/x\in B$
+    que é integral sobre $A$. Logo existem $\alpha_1,\ldots,\alpha_n\in A$
+    tais que 
+    \[
+        \frac 1{x^n}+\alpha_1\frac 1{x^{n-1}}+\cdots+\alpha_{n-1}\frac 1x+\alpha_n=0.
+    \]
+    Multiplicando por $x^{n-1}$, obtemos que 
+    \[
+        \frac 1x+\alpha_1+\alpha_2x+\cdots+\alpha_{n-1}x^{n-2}+\alpha_nx^{n-1}=0;
+    \]
+    ou seja $1/x\in A$.
+\end{proof}
+
+\begin{theorem}[Nullstellensats de Zariski]\label{th:zariski}
+    Seja $\K$ um corpo que é também uma $\F$ algébra finitamente gerada. Então $\dim_\F\K$ é finita e $\K$ é uma extensão algébrica de $\F$. 
+\end{theorem}
+\begin{proof}
+    Pelo Teorema de Normalização, existem $t_1,\ldots,t_m\in \K$ algebricamente independentes tais que 
+    $\K$ é finitamente gerada (e, em particular, integral) sobre $\F[t_1,\ldots,t_m]$. Como $\K$ é corpo,  
+    $\F[t_1,\ldots,t_m]$ é também corpo e $m=0$. Logo $\K$ é extensão algébrica de $\F$. Por supposição, 
+    $\K=\F[\alpha_1,\ldots,\alpha_n]=\F(\alpha_1,\ldots,\alpha_n)$ com $\alpha_i$ algébricos. Segue que 
+    $\dim_\F\K$ é finita.
+\end{proof}
+
+\begin{corollary}\label{cor:max}
+    Seja $\varphi:R\to S$ um morfismo de $\F$-álgebras finitamente geradas. Se $\m$ é maximal em 
+    $S$, então $\varphi^{-1}(\m)$ é maximal em $R$
+\end{corollary}
+\begin{proof}
+    Seja $\K=S/\m$ e $\n=\varphi^{-1}(\m)$. Pelo Teorema~\ref{th:zariski}, $\K$ é uma extensão finita de $\F$. Além disso,
+    $\varphi$ induz um morfismo injetivo $R/\n\to S/\m$ definido por $r+\n\mapsto \varphi(r)+\m$. 
+    Logo $R/\n\subseteq S/\m$. Como $\dim_\F S/\m$ é finita, $\dim_{\F}R/\n$ é finita e 
+    o Lema~\ref{lem:corpos} implica que $R/\n$ é um corpo. Logo $\n$ é maximal em $R$. 
+\end{proof}
+
+\begin{exercise}
+    Seja $\F[x_1,\ldots,x_n]$ uma álgebra finitamente gerada e sejam $\alpha_1,\ldots,\alpha_n\in \F$. 
+    Mostre que $(x_1-\alpha_1,\ldots,x_n-\alpha_n)$ é um ideal maximal.
+\end{exercise}
+
+\begin{corollary}
+    Seja $\F$ algebricamente fechado e $\m$ um ideal maximal de uma $\F$-álgebra $\F[y_1,\ldots,y_n]$ 
+    finitamente gerada. Então existem $\alpha_1,\ldots,\alpha_n\in\F$ tais que 
+    \[
+        \m=(x_1-\alpha_1,\ldots,x_n-\alpha_n).
+    \]
+\end{corollary}
+\begin{proof}
+    Como o ideal $\m$ é maximal, $\K=\F[x_1,\ldots,x_n]/\m$ é um corpo e é também uma álgebra finitamente 
+    gerada sobre $\F$. Pelo Teorema~\ref{th:zariski}, $\K$ é extensão finita de $\F$ e $\K=\F$ pelo fato que 
+    $\F$ é algebricamente fechado. Ou seja, existe um morfismo $\psi: \F[x_1,\ldots,x_n]\to\F$ com núcleo 
+    $\m$. Pondo $\alpha_i=\psi(x_i)$, $x_i-\alpha_i\in \m$; 
+    ou seja $(x_1-\alpha_1,\ldots,x_n-\alpha_n)\subseteq \m$. O ideal $(x_1-\alpha_1,\ldots,x_n-\alpha_n)$ é maximal pelo exercício anterior que implica igualdade. 
+\end{proof}
+
+\begin{corollary}
+    Seja $\F$ um corpo algebricamente fechado e seja $\a\subset \F[x_1,\ldots,x_n]$ um ideal próprio na álgebra 
+    dos polinômios. Então 
+    \[
+        V(\a)=\{(\alpha_1,\ldots,\alpha_n)\in\F^n\mid f(\alpha_1,\ldots,\alpha_n)=0\mbox{ para todo }f\in \a\}\neq \emptyset.
+    \]
+\end{corollary}
+\begin{proof}
+    Seja $\m=(x_1-\alpha_1,\ldots,x_n-\alpha_n)$ um ideal maximal que contém $\a$. Então 
+    \[
+        (\alpha_1,\ldots,\alpha_n)\in V(\m)\subseteq V(\a).
+    \]
+\end{proof}
+
+\begin{exercise}
+    Seja $R$ um anel e considere $R[x_1,\ldots,x_n]$. Assuma que $f\in R[x_1]$. Então 
+    \[
+        R[x_1,\ldots,x_n]/(fR[x_1,\ldots,x_n])\cong (R[x_1]/(fR[x_1])[x_2,\ldots,x_n]. 
+    \]
+\end{exercise}
+
+\begin{corollary}
+    Seja $R=\F[x_1,\ldots,x_n]$ um anel de polinômios e $\m\subseteq R$ um ideal maximal. Então $\m$ é gerado por $n$ elementos. 
+\end{corollary}
+\begin{proof}
+    Indução por $n$. Quando $n=0$, é trivial pois o único ideal maximal de $\F$ é o zero. Assuma que o resultado está verdadeiro para $\F[x_1,\ldots,x_{n-1}]$ e seja $\m$ um ideal maximal de 
+    $R=\F[x_1,\ldots,x_{n}]$. Seja $\K=R/\m$. Pelo Teorema~\ref{th:zariski}, $\K$ é um corpo e é uma extensão finita de 
+    $\F$. Seja $R_0=\F[x_1]$ e $\n=\m\cap R_0$. Então $\n=(f_1)_{R_0}$
+    e seja $\L=R_0/\n$. 
+    %Então temos que 
+    %\[
+    %    \L=R_0/(\m\cap \m)\cong(R_0+\m)/m
+    %\] 
+    %e $\F\subseteq \L\subseteq \K$ é uma cadeia de anéis tais que $\F$ e $\K$ são corpos e $\dim_\F\K$ é 
+    %finita. Isso implica que $\dim_\F\L$ é tambpem finita, e $\L$ é integral sobre $\F$. Logo, $\L$ é um corpo
+    Pelo Corolário~\ref{cor:max}, 
+    $\n$ é maximal. Ora $R/(\n R)\cong \L[x_2,\ldots,x_n]$ e $\m/(\n R)$ é maximal em 
+    $R/(\n R)\cong \L[x_2,\ldots,x_n]$. Pela hipótese da indução, $\m/(\n R)$ é gerado por $f_2,\ldots,f_n$ e 
+    $\m$ é gerado por $f_1,f_2,\ldots,f_n$.  
+\end{proof}
+
+
+\begin{theorem}
+Assuma que $R=\F[x_1,\ldots,x_n]$ é uma álgebra finitamente gerada e $\a\neq R$ é um ideal. Então 
+\[
+    \sqrt{(\a)}=\bigcap_{\a\subseteq \m}\m
+\]
+onde a interseção está tomada para todos os ideais maximais de $R$ que contêm $\a$. 
+\end{theorem}
+\begin{proof}
+    Quocientando por $\a$, podemos assumir que $\a=0$. Como $\sqrt{0}$ é o nilradical que está contido 
+    no radical de Jacobson, temos que $\sqrt{0}\subseteq \bigcap \m$. Ora assuma que 
+    $f\not\in \sqrt{0}$. Então $f$ não é nilpotente, e a localização $R_f\neq 0$. Seja $\n$ um ideal 
+    maximal de $R_f$. Como $R_f\cong R[X]/(1-fX)$, temos que $R_f$ é finitamente gerada como $\F$-álgebra
+    e assim o corpo $R_f/\n$ é uma extensão finita de $\F$.  Seja $\m=\n\cap R$. 
+    %Então 
+    %\[
+    %   \F\subseteq R/\m=R/(R\cap \n)\cong (R+\n)/\n\subseteq R_f/\n.
+    %\]
+%Isso implica que $R_f/n$ é integral sobre $R/\m$ e 
+Pelo Corolário~\ref{cor:max}, $\m$ é maximal e $R/\m$ é um corpo. Mas $f$ é invertível 
+em $R_f$ e assim $f/1\not\in \n$ e $f\not\in\m$. Logo $f\not\in\bigcap\m$.
+\end{proof}
+
+\end{document}
